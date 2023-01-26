@@ -6,9 +6,9 @@ import { fail, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
 	createMovie: async ({ request }) => {
-		const { title, rating } = Object.fromEntries(await request.formData()) as unknown as {
+		const { title, rating } = Object.fromEntries(await request.formData()) as {
 			title: string;
-			rating: number;
+			rating: any;
 		};
 
 		try {
