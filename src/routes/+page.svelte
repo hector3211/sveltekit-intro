@@ -1,16 +1,17 @@
 <script lang="ts">
-	import type { Products } from './+page';
-
-	export let data;
-	const { products }: Products = data;
 </script>
 
 <div>
 	<h1 class="text-red-500">Welcome to SvelteKit</h1>
-	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-	{#each products as product}
-		<h1>{product.title}</h1>
-		<h2>{product.price}</h2>
-		<h3>{product.id}</h3>
-	{/each}
+	<h2>Form</h2>
+	<div class="max-w-md">
+		<form action="?/createMoive" method="POST" class="flex flex-col justify-evenly items-center">
+			<h3>New Movie</h3>
+			<label for="title">Title</label>
+			<input type="text" id="title" name="title" class="text-black" />
+			<label for="rating">Rating</label>
+			<input type="number" id="rating" name="rating" class="text-black" />
+			<button type="submit" class="bg-indigo-500 rounded rouned-md p-2">Add Movie</button>
+		</form>
+	</div>
 </div>
