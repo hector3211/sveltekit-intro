@@ -8,6 +8,5 @@
 		<a class="text-2xl font-bold px-2" href="/todos" data-sveltekit-preload-data>Todos</a>
 		<a class="text-2xl font-bold" href="/movies" data-sveltekit-preload-data>Movies</a>
 	</nav>
-
 	<slot />
 </main>
