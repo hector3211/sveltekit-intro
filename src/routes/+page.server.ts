@@ -5,7 +5,7 @@ type MyType = {
 	title: string;
 	rating: number;
 };
-//
+
 export const load: PageServerLoad = async () => {
 	return {
 		movies: prisma.movie.findMany()

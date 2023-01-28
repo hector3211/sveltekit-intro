@@ -1,12 +1,27 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import type { myMessage } from './api/hello/+server';
 	export let data: PageData;
 	$: ({ movies } = data);
+	async function getMessage() {
+		const res = await fetch('api/hello');
+		const message: myMessage = await res.json();
+		return message.message;
+	}
 </script>
 
 <div class="flex flex-col justify-center items-center text-3xl w-full">
 	<h1 class="text-red-500">Welcome to SvelteKit</h1>
-	<div class="max-w-md mt-10">
+	{#await getMessage()}
+		<p>Loading...</p>
+	{:then message}
+		<pre class="text-green-400 flex justify-center items-center">
+        {JSON.stringify(message, null, 2)}
+    </pre>
+	{:catch error}
+		<p>{error.message}</p>
+	{/await}
+	<div class="max-w-md mt-5">
 		<form action="?/createMovie" method="POST" class="flex flex-col justify-evenly items-center">
 			<h3>New Movie</h3>
 			<label for="title">Title</label>

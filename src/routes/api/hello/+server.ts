@@ -4,9 +4,9 @@ export type myMessage = {
 	message: string;
 };
 
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async (event) => {
 	const message: myMessage = {
-		message: 'hello Hector'
+		message: 'hello svelete kit!'
 	};
 
 	if (!message) {
