@@ -1,7 +1,7 @@
 import { fail, type Actions } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 import type { PageServerLoad } from './$types';
-export type MyType = {
+type MyType = {
 	title: string;
 	rating: number;
 };
@@ -19,7 +19,7 @@ export const actions: Actions = {
 			title: String(data.get('title')),
 			rating: Number(data.get('rating'))
 		};
-		if (!inputData.title || !inputData.rating) {
+		if (!inputData || !inputData.title || !inputData.rating) {
 			return fail(400, { message: 'Title or Rating missing' });
 		}
 

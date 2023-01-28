@@ -1,12 +1,16 @@
-import { error } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+export type myMessage = {
+	message: string;
+};
 
-export const GET = (({ url }) => {
-	const message = String(url.searchParams.get('message'));
+export const GET: RequestHandler = async () => {
+	const message: myMessage = {
+		message: 'hello Hector'
+	};
 
 	if (!message) {
-		throw error(400, 'message not recieved!');
+		throw error(405, 'oh no!!');
 	}
-
-	return new Response(String(message));
-}) satisfies RequestHandler;
+	return json(message);
+};
